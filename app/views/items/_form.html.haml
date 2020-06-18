@@ -35,7 +35,7 @@
         %span.required-true
           必須
         %br
-        = f.text_field :name, required: true, placeholder: "PC・携帯どちらも可"
+        = f.text_field :name, required: true, placeholder: "PC・携帯どちらも可", value: 'item1'
         .error-field{data:{column_name: "name"}}
     .input-field
       .input-field-main
@@ -43,7 +43,7 @@
         %span.required-true
           必須
         %br
-        = f.text_area :detail, required: true, placeholder: "6文字以上", rows: 5
+        = f.text_area :detail, required: true, placeholder: "6文字以上", rows: 5, value: 'item1です'
         .error-field{data:{column_name: "detail"}}
   .block.horizontal-padding-5
     .input-field
@@ -63,7 +63,7 @@
         %span.required-true
           必須
         %br
-        = f.select :condition, Item.conditions.keys, {include_blank: "---"}
+        = f.select :condition, Item.conditions.keys, {include_blank: "---", selected: '新品、未使用'}
   .block.horizontal-padding-5
     .input-field
       .input-field-title
@@ -74,7 +74,7 @@
         %span.required-true
           必須
         %br
-        = f.select :delivery_fee_payer, Item.delivery_fee_payers.keys, {include_blank: "---"}
+        = f.select :delivery_fee_payer, Item.delivery_fee_payers.keys, {include_blank: "---", selected: '送料込み（出品者負担）'}
         .error-field{data:{column_name: "delivery_fee_payer"}}
         %br
         .input-field-main__delivery-method
@@ -82,21 +82,21 @@
           %span.required-true
             必須
           %br
-          = f.select :delivery_method, Item.delivery_methods.keys, {include_blank: "---"}
+          = f.select :delivery_method, Item.delivery_methods.keys, {include_blank: "---",selected: 'らくらくメルカリ便'}
           %br
           .error-field{data:{column_name: "delivery_method"}}
         = f.label :prefecture_id, "発送元の地域"
         %span.required-true
           必須
         %br
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, required: true, placeholder: "発送元の地域"
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---", selected: 1}, required: true, placeholder: "発送元の地域"
         .error-field{data:{column_name: "prefecture_id"}}
         %br
         = f.label :delivery_days, "発送までの日数"
         %span.required-true
           必須
         %br
-        = f.select :delivery_days, Item.delivery_days.keys, {include_blank: "---"}
+        = f.select :delivery_days, Item.delivery_days.keys, {include_blank: "---", selected: '1〜2日で発送'}
         .error-field{data:{column_name: "delivery_days"}}
   .block.horizontal-padding-5
     .input-field
@@ -110,7 +110,7 @@
             %span.required-true
               必須
           .input-field-main-price__right
-            = f.text_field :price, required: true, placeholder: "価格"
+            = f.text_field :price, required: true, placeholder: "価格", value: 1000
             .error-field{data:{column_name: "price"}}
         %hr
         .input-field-main-price
