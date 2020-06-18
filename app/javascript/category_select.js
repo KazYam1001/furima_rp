@@ -10,7 +10,7 @@ document.addEventListener('turbolinks:load', function () {
     });
 
     const html = `
-                  <select required="required" class="select-category" id="parent-category" name="item[category_id]">
+                  <select required="required" class="select-category" id="parent-category"">
                     <option value="">---</option>
                     ${options}
                   </select>
