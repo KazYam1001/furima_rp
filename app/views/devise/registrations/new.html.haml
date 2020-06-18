@@ -9,14 +9,14 @@
           %span.required-true
             必須
           %br
-          = f.text_field :nickname, required: true, placeholder: "例）メルカリ太郎"
+          = f.text_field :nickname, required: true, placeholder: "例）メルカリ太郎", value: 'seller'
       .input-field
         .input-field-main
           = f.label :email, "メールアドレス"
           %span.required-true
             必須
           %br
-          = f.text_field :email, required: true, placeholder: "PC・携帯どちらも可"
+          = f.text_field :email, required: true, placeholder: "PC・携帯どちらも可", value: 'seller@com'
       -# SNS認証の時はパスワード入力欄を消す
       - unless @sns_auth
         .input-field
@@ -45,16 +45,16 @@
           %span.required-true
             必須
           .input-field-multiple
-            = f.text_field :last_name, required: true, placeholder: "例）山田"
-            = f.text_field :first_name, required: true, placeholder: "例）彩"
+            = f.text_field :last_name, required: true, placeholder: "例）山田", value: '出品'
+            = f.text_field :first_name, required: true, placeholder: "例）彩", value: '太郎'
       .input-field
         .input-field-main
           = f.label :last_name_reading, "お名前カナ（全角）"
           %span.required-true
             必須
           .input-field-multiple
-            = f.text_field :last_name_reading, required: true, placeholder: "例）ヤマダ"
-            = f.text_field :first_name_reading, required: true, placeholder: "例）アヤ"
+            = f.text_field :last_name_reading, required: true, placeholder: "例）ヤマダ", value: 'シュッピン'
+            = f.text_field :first_name_reading, required: true, placeholder: "例）アヤ", value: 'タロウ'
       .input-field
         .input-field-main
           = f.label :birthday, "生年月日"
