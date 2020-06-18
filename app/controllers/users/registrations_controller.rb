@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.user_object"] = @user.attributes  ## sessionに@userをencrypted_password込で入れる
     session["devise.user_object"][:password] = params[:user][:password]  ## 暗号化前のパスワードをsessionに入れる
-    respond_with resource, location: after_sign_up_path_for(resource)  ## リダイレクト
+    redirect_to users_confirm_phone_path
   end
 
   # GET /resource/edit
@@ -135,9 +135,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
   end
 
-  def after_sign_up_path_for(resource)
-    users_confirm_phone_path
-  end
+  # def after_sign_up_path_for(resource)
+  #   root_path
+  # end
 
   def check_recaptcha
     redirect_to new_user_registration_path unless verify_recaptcha(message: "reCAPTCHAを承認してください")
