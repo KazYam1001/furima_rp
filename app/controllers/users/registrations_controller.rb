@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  prepend_before_action :check_recaptcha, only: [:create]
+  # prepend_before_action :check_recaptcha, only: [:create]
   before_action :session_has_not_user, only: [:confirm_phone, :new_address, :create_address, :create_address]
   layout 'no_menu'
 
