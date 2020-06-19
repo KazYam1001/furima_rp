@@ -26,7 +26,7 @@
               クリックしてファイルをアップロード
     #image-file-fields
       = f.fields_for :images do |image|
-        = image.file_field :src, multiple: true, name: 'item[images][]' accept: "image/*", class: "new-item-image", data: {index: image.index}
+        = image.file_field :src, accept: "image/*", class: "new-item-image", data: {index: image.index}
         - if image.object.persisted?
           = image.check_box :_destroy
     .error-field{data:{column_name: "item_images"}}
