@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]{8,128}+\z/i }
 
   has_one :address
+  accepts_nested_attributes_for :address, update_only: true
   has_many :selling_items, class_name: "Item", foreign_key: "seller_id"
   has_many :bought_items, class_name: "Item", foreign_key: "buyer_id"
   has_one :card

@@ -81,15 +81,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new_address
     @progress = 3
     @user = User.new
+    @user.build_address
   end
 
   def create_address
-    @address = Address.new(address_params)
-    @user = User.new(user_params)
+    @user = User.new(user_params.merge(session["devise.user_object"]))
     @progress = 5
     if @user.save
-      @address.user_id = @user.id
-      @address.save
       sign_up(resource_name, resource)  ## ログインさせる
     else
       redirect_to users_new_address_path, alert: @user.errors.full_messages
@@ -127,7 +125,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :first_name_reading,
       :last_name,
       :last_name_reading,
-      :birthday
+      :birthday,
+      address_attributes: [
+        :phone_number,
+        :postal_code,
+        :prefecture_id,
+        :city,
+        :house_number,
+        :building_name
+      ]
     )
   end
 
@@ -139,16 +145,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to new_user_registration_path unless verify_recaptcha(message: "reCAPTCHAを承認してください")
   end
 
-  def address_params
-    params.require(:address).permit(
-      :phone_number,
-      :postal_code,
-      :prefecture_id,
-      :city,
-      :house_number,
-      :building_name,
-      )
-  end
+  # def address_params
+  #   params.require(:address).permit(
+  #     :phone_number,
+  #     :postal_code,
+  #     :prefecture_id,
+  #     :city,
+  #     :house_number,
+  #     :building_name,
+  #     )
+  # end
 
   def session_has_not_user
     redirect_to new_user_registration_path, alert: "会員情報を入力してください。" unless session["devise.user_object"]

@@ -19,7 +19,7 @@
         .input-field-multiple
           = f.text_field :last_name_reading, required: true, placeholder: "例）ヤマダ", value: 'シュッピン'
           = f.text_field :first_name_reading, required: true, placeholder: "例）アヤ", value: 'タロウ'
-    = fields_for :address do |a|
+    = f.fields_for :address do |a|
       .input-field
         .input-field-main
           = a.label :postal_code, "郵便番号"
