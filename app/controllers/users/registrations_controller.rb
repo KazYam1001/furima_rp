@@ -90,7 +90,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     ## user,sns_credential,addressの登録とログインをする
     @progress = 5
-    @user = User.new(user_params)
+    @user = User.new(session["devise.user_object"])
     @user.build_sns_credential(session["devise.sns_auth"]["sns_credential"]) if session["devise.sns_auth"] ## sessionがあるとき＝sns認証でここまできたとき
     @user.address = @address
     if @user.save

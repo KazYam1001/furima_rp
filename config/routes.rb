@@ -23,9 +23,9 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :purchase, only: :new
   end
 
-  resources :purchase, only: :new
 
   resources :categories, only: [:index, :show]
   resources :cards, only: [:index, :new, :create, :destroy]

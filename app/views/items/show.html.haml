@@ -61,7 +61,7 @@
       .item-show__price--right
         送料込み
     - if @item.seller != current_user
-      = link_to new_purchase_path do
+      = link_to new_item_purchase_path(@item) do
         .button.back-red
           購入画面に進む
     - if @item.seller == current_user
