@@ -18,7 +18,7 @@ document.addEventListener('turbolinks:load', function () {
       if (status === 200) { //成功した場合
         alert("カードを登録しました");
         // ↓hidden_fieldにcardのtokenを入れることでtokenがparamsに送られる。
-        $("#card_token").append(
+        $("#card_form").append(
           `<input type="hidden" name="payjp_token" value=${response.id}>
           <input type="hidden" name="card_token" value=${response.card.id}>`
         );
