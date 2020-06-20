@@ -22,16 +22,12 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
+      get 'get_category', defaults: { format: 'json' }
     end
     resources :purchase, only: :new
-  end
 
+  end
 
   resources :categories, only: [:index, :show]
   resources :cards, only: [:index, :new, :create, :destroy]
-
-  namespace :api do
-    resources :categories, only: :index, defaults: { format: 'json' }
-  end
-
 end

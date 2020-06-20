@@ -23,7 +23,7 @@ document.addEventListener('turbolinks:load', function () {
     const category_id = $(this).val(); // 選択されたカテゴリのidを取得
     var changed_form = $(this); // ajax後でもthisが使えるようにするため
     $.ajax({
-        url: "/api/categories",
+        url: "/items/get_category",
         type: "GET",
         data: {
           category_id: category_id

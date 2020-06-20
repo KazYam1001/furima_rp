@@ -40,6 +40,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def get_category
+    category = Category.find(params[:category_id])
+    @categories = category.children
+  end
+
   def edit
     @item = Item.find(params[:id])
     @item.images.build
