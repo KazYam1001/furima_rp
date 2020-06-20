@@ -6,19 +6,14 @@ class ItemsController < ApplicationController
   before_action :sold_item, only: [:edit, :update, :destroy, :purchase_confirmation, :purchase]
 
   def index
-    ladies_category = Category.find_by(name: "レディース")
-    mens_category = Category.find_by(name: "メンズ")
-    kids_category = Category.find_by(name: "ベビー・キッズ")
-
-    ladies_items = Item.search_by_categories(ladies_category.subtree).new_items
-    mens_items = Item.search_by_categories(mens_category.subtree).new_items
-    kids_items = Item.search_by_categories(kids_category.subtree).new_items
-
-    @new_items_arrays = [
-       {category: ladies_category, items: ladies_items},
-       {category: mens_category, items: mens_items},
-       {category: kids_category, items: kids_items}
-      ]
+    @radies_category = Category.find_by(name: 'レディース')
+    @radies = Item.where(category: @radies_category.subtree)
+    @mens_category = Category.find_by(name: 'メンズ')
+    @mens = Item.where(category: @mens_category.subtree)
+    @kids_category = Category.find_by(name: 'ベビー・キッズ')
+    @kids = Item.where(category: @kids_category.subtree)
+    @hobby_category = Category.find_by(name: 'おもちゃ・ホビー・グッズ')
+    @hobby = Item.where(category: @hobby_category.subtree)
   end
 
   def show

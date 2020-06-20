@@ -20,19 +20,37 @@
 .pickups-header
   人気のカテゴリー
   .pickups-header__category-names
-    - @new_items_arrays.each do |new_items|
-      = link_to category_path(new_items[:category]) do
-        .pickups-header__category-names--category-name
-          = new_items[:category].name
 .pickups.horizontal-padding-15
   %br
-  - @new_items_arrays.each do |new_items|
-    .pickup
-      %span.pickup__name
-        = new_items[:category].name
-        新着アイテム
-      = link_to category_path(new_items[:category]) do
-        %span.pickup__display-all
-          もっと見る >
-      .pickup__items
-        = render new_items[:items]
+  .pickup
+    %span.pickup__name
+      = @radies_category.name
+      新着アイテム
+    %span.pickup__display-all
+      もっと見る >
+    .pickup__items
+      = render partial: 'item', collection: @radies, as: :item
+  .pickup
+    %span.pickup__name
+      = @mens_category.name
+      新着アイテム
+    %span.pickup__display-all
+      もっと見る >
+    .pickup__items
+      = render partial: 'item', collection: @mens, as: :item
+  .pickup
+    %span.pickup__name
+      = @kids_category.name
+      新着アイテム
+    %span.pickup__display-all
+      もっと見る >
+    .pickup__items
+      = render partial: 'item', collection: @kids, as: :item
+  .pickup
+    %span.pickup__name
+      = @hobby_category.name
+      新着アイテム
+    %span.pickup__display-all
+      もっと見る >
+    .pickup__items
+      = render partial: 'item', collection: @hobby, as: :item
