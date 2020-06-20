@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', function () {
   if (!$('#card_form')[0]) return false; //カード登録ページではないなら以降実行しない。
 
-  Payjp.setPublicKey("pk_test_9ebaca48cfe1eb60058d9d0a"); //公開鍵を読み込む。
+  Payjp.setPublicKey("pk_test_7370ce03239ee60f10ca694c"); //公開鍵を読み込む。
   const regist_button = $("#regist_card"); //カード入力フォームの登録ボタン。
 
   regist_button.on("click", function (e) { //登録ボタンを押したとき（ここはsubmitではなくclickにしておく）。
