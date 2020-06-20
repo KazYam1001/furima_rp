@@ -85,7 +85,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_address
-    @user = User.new(user_params.merge(session["devise.user_object"]))
+    @user = User.new(user_params)
     @progress = 5
     if @user.save
       sign_up(resource_name, resource)  ## ログインさせる

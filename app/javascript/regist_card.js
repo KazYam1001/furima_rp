@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', function () {
   if (!$('#card_form')[0]) return false; //カード登録ページではないなら以降実行しない。
 
-  Payjp.setPublicKey("pk_test_7370ce03239ee60f10ca694c"); //公開鍵を読み込む。
+  Payjp.setPublicKey("pk_test_0383a1b8f91e8a6e3ea0e2a9"); //公開鍵を読み込む。
   const regist_button = $("#regist_card"); //カード入力フォームの登録ボタン。
 
   regist_button.on("click", function (e) { //登録ボタンを押したとき（ここはsubmitではなくclickにしておく）。
@@ -18,7 +18,7 @@ document.addEventListener('turbolinks:load', function () {
       if (status === 200) { //成功した場合
         alert("カードを登録しました");
         // ↓hidden_fieldにcardのtokenを入れることでtokenがparamsに送られる。
-        $("#card_form").append(
+        $("form")[0].append(
           `<input type="hidden" name="payjp_token" value=${response.id}>
           <input type="hidden" name="card_token" value=${response.card.id}>`
         );

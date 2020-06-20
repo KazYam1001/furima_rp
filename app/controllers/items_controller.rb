@@ -7,13 +7,13 @@ class ItemsController < ApplicationController
 
   def index
     @radies_category = Category.find_by(name: 'レディース')
-    @radies = Item.where(category: @radies_category.subtree)
+    @radies = Item.where(category: @radies_category)
     @mens_category = Category.find_by(name: 'メンズ')
-    @mens = Item.where(category: @mens_category.subtree)
+    @mens = Item.where(category: @mens_category)
     @kids_category = Category.find_by(name: 'ベビー・キッズ')
-    @kids = Item.where(category: @kids_category.subtree)
+    @kids = Item.where(category: @kids_category)
     @hobby_category = Category.find_by(name: 'おもちゃ・ホビー・グッズ')
-    @hobby = Item.where(category: @hobby_category.subtree)
+    @hobby = Item.where(category: @hobby_category)
   end
 
   def show
@@ -93,7 +93,7 @@ class ItemsController < ApplicationController
       :delivery_days,
       :prefecture_id,
       :category_id,
-      images_attributes: [:src, :id]
+      images_attributes: [:src]
       ).merge(seller_id: current_user.id)
   end
 
